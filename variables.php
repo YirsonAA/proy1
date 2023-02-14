@@ -83,11 +83,11 @@
     <?php
     print "<h2> 3 - String Utilities </h2>";
     print "<br>";
-    echo strlen("Francisco");
+    echo strlen("Yirson");
     print "<br>";
-    echo str_word_count("Francisco Zamora Valverde");
+    echo str_word_count("Yirson Acevedo Arguedas");
     print "<br>";
-    echo strrev("Francisco Zamora");
+    echo strrev("Yirson Acevedo");
     print "<br>";
     echo str_replace("Zamora", "xCodeFreak", "Francisco Zamora");
     ?>
@@ -104,7 +104,41 @@
         echo "no";
     }
     ?>
+<?php
+echo $_SERVER["REQUEST_METHOD"];
+echo "<br>";
+echo $_GET['name'] . " ";
+echo $_GET['lastName'] . ", edad: ";
+echo $_GET["age"];
+echo "<br>";
 
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://reqres.in/api/users',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_CUSTOMREQUEST => 'GET',
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo "<br>";
+echo "<br>";
+/*var_dump($response);
+echo "<br>";
+echo $response;*/
+
+$obj = json_decode($response);
+echo "<br>";
+//var_dump($obj);
+echo "<br>";
+//var_dump($obj -> total_pages);
+
+echo "<br>";
+print_r($obj -> data[1]);
+
+?>
 </body>
 
 </html>
